@@ -30,16 +30,18 @@ def stop(target_number, your_guess):
     else:
         print(f"You did it, {your_guess} is the correct answer")
 
+def again(target_number, your_guess, count):
+    wrong_number(target_number, your_guess)
+    count -= 1
+    print(f"You have {count} tries left")
+    your_guess = enter_guess()
+    return your_guess, count
+
 def compare_numbers(target_number, count):
     your_guess = enter_guess()
-    if target_number != your_guess:
-        while count > 1:
-            wrong_number(target_number, your_guess)
-            count -= 1
-            print(f"You have {count} tries left")
-            your_guess = enter_guess()
+    while target_number != your_guess and count >1:
+        your_guess, count = again(target_number, your_guess, count)
     stop(target_number, your_guess)
-
 
 if __name__ == '__main__':
     main()
