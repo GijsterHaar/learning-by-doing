@@ -14,7 +14,7 @@ def main():
     target_number = get_random_number()
     your_guess = enter_guess()
     compare_numbers(target_number, your_guess, count)
-    stop(target_number, your_guess)
+
 
 def welcome():
     print("Welcome to my number guessing name.\nYou have six guesses.") 
@@ -45,7 +45,7 @@ def compare_numbers(target_number, your_guess, count):
             count -= 1
             print(f"You have {count} tries left")
             your_guess = enter_guess()
-
+    stop(target_number, your_guess)
 
 
 if __name__ == '__main__':
