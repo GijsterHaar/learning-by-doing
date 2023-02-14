@@ -1,20 +1,12 @@
 print()
 
-# need to generate a random number between 1 and 100
-# need an input
-# need conditionals to check
-# need to know when to stop
-# need to print "wrong" or "guessed it"
-
 from random import randint
 
 def main():
     count = 6
     welcome()
     target_number = get_random_number()
-    your_guess = enter_guess()
-    compare_numbers(target_number, your_guess, count)
-
+    compare_numbers(target_number, count)
 
 def welcome():
     print("Welcome to my number guessing name.\nYou have six guesses.") 
@@ -34,13 +26,14 @@ def wrong_number(target_number, your_guess):
 
 def stop(target_number, your_guess):
     if target_number != your_guess:
-        print("Sorry, six is the max")
+        print(f"Sorry, also {your_guess} is incorrect.\nAnd six guesses is the max.")
     else:
         print(f"You did it, {your_guess} is the correct answer")
 
-def compare_numbers(target_number, your_guess, count):
-    for _ in range(5):
-        if target_number != your_guess:
+def compare_numbers(target_number, count):
+    your_guess = enter_guess()
+    if target_number != your_guess:
+        while count > 1:
             wrong_number(target_number, your_guess)
             count -= 1
             print(f"You have {count} tries left")

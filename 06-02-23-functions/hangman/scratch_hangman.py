@@ -26,7 +26,7 @@ def welcome():
 
 def get_a_word():
     word_list = []
-    word_file = open("6_letter_words_2.txt")
+    word_file = open("6_letter_words.txt")
     for word in word_file:
         word_list.append(word.lower())
     answer = random.choice(word_list)
