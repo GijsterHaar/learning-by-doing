@@ -1,47 +1,66 @@
 print()
 import random
-import sys
-
-# generate a random word
-# welcome a player with a message to prompt a guess (1 letter) and a line of dots, one for each letter
-# compare the guess with the generated word
-# if letter in word replace dots with letter
-# countdown to zero
-# if word is guessed within turns print succes else print to bad
 
 def main():
-    answer = get_a_word()
+    word = get_a_word()
+    count = 6
+    answer_line = ['.', '.', '.', '.', '.', '.']
     welcome()
     your_guess = guess()
-    compare(answer, your_guess)
-
-def welcome():
-    print("Welcome to my 6-letter-word hangman game.\nYou have six guesses")
-    print()
+    first_compare(word, your_guess, answer_line, count)
 
 def get_a_word():
     word_list = []
-    word_file = open("6_letter_words.txt")
-    for word in word_file:
-        word_list.append(word.strip())
-    answer = random.choice(word_list)
-    print(answer)
-    return answer.lower()
+    word_file = open("hangman_words.txt")
+    for words in word_file:
+        word_list.append(words.strip().lower())
+    word = random.choice(word_list)
+    print(word)
+    return list(word)
+
+def welcome():
+    print("Welcome to my 6-letter-word hangman game.\nYou have six guesses.\n......")
+    print()
 
 def guess():
     return input("Please enter a character: ")
 
-def compare(answer, your_guess):
-    for char in answer:
-        if char == your_guess:
+def first_compare(word, your_guess, answer_line, count):
+    for i, char in enumerate(word):
+        if your_guess == char:
+            answer_line.pop(i)
+            answer_line.insert(i, your_guess)
+    first_print_and_into_the_loop(word, answer_line, count)
+
+def first_print_and_into_the_loop(word, answer_line, count):
+    while answer_line != word and count > 1:
+        answer_line = ''.join(answer_line)
+        print(answer_line)
+        count, word, answer_line = and_loop_again(count, word, answer_line)
+    stop(word, answer_line)
+
+def and_loop_again(count, word, answer_line):
+    count -= 1
+    your_guess = guess()
+    answer_line = list(answer_line)
+    check_looping(word, answer_line, your_guess)
+    return count, word, answer_line
+
+def check_looping(word, answer_line, your_guess):
+    for i, char in enumerate(word):
+        if your_guess == char:
+            answer_line.pop(i)
+            answer_line.insert(i, your_guess)
+    return word, answer_line, your_guess
     
-            print(answer.index(your_guess))
 
-
-
-
-
-
+def stop(word, answer_line):
+    if word == answer_line:
+        answer_line = ''.join(answer_line)
+        print(f'Yes, you did it, {answer_line} is the correct answer')
+    else:
+        word = ''.join(word)
+        print(f"Sorry mate, you'r hanging, {word} is the correct word")
 
 if __name__ == '__main__':
     main()
