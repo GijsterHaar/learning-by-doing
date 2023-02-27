@@ -42,7 +42,6 @@ def first_print_and_into_the_loop(word, answer_line, count):
 
 def and_loop_again(count, word, answer_line):
     answer_line = list(answer_line)
-    
     your_guess = guess()
     count = check_looping(count, word, answer_line, your_guess)
     return count, word, answer_line
