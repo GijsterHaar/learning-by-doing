@@ -5,16 +5,16 @@ def main():
     most = ''
     freq_dict={}
     rating_dict={}
-    best_score = 0
+    best_score = 0 
     best_actors = []
     eighties = []
     genre_list = []
 
     movie_library = movie_data.movies
-    freq_dict = movies_actor_dict(movie_library, freq_dict)
+    freq_dict = actor_in_movies_dict(movie_library, freq_dict)
     count, most = the_most_movies_actor(freq_dict, count, most)
     print(f'\nThe actor appearing in most movies with {count} appearances is {most}\n')
-    get_rating_dict(movie_library, rating_dict)
+    get_total_rating_dict(movie_library, rating_dict)
     rating_dict = average_rating_dict(rating_dict, freq_dict)
     best_actors, best_score = get_best_rating_actors(rating_dict, best_score, best_actors)
     best_actors = ', '.join(best_actors)
@@ -22,7 +22,7 @@ def main():
     eighties = check_eighties_only(movie_library, eighties)
     not_in_eighties(movie_library, eighties, genre_list)
 
-def movies_actor_dict(movie_library, freq_dict):
+def actor_in_movies_dict(movie_library, freq_dict):
     for movie in movie_library:
         for name in movie.get('actors'):
             if name in freq_dict:
@@ -38,7 +38,7 @@ def the_most_movies_actor(freq_dict, count, most):
             most = key
     return count, most
 
-def get_rating_dict(movie_library, rating_dict):
+def get_total_rating_dict(movie_library, rating_dict):
     for movie in movie_library:
         for name in movie.get('actors'):
             if name in rating_dict:
