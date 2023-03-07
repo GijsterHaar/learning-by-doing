@@ -5,10 +5,10 @@ def main():
     most = ''
     freq_dict={}
     rating_dict={}
-    genre_freq_dict = {}
     best_score = 0
     best_actors = []
     eighties = []
+    genre_list = []
 
     movie_library = movie_data.movies
     freq_dict = movies_actor_dict(movie_library, freq_dict)
@@ -19,9 +19,8 @@ def main():
     best_actors, best_score = get_best_rating_actors(rating_dict, best_score, best_actors)
     best_actors = ', '.join(best_actors)
     print(f'The best actors are {best_actors} with an average rating of {best_score}\n')
-    genre_freq_dict = genre_frequency_dict(movie_library, genre_freq_dict)
-    eighties = check_eighties_only(movie_library, genre_freq_dict, eighties)
-    least_in_eighties(movie_library, eighties)
+    eighties = check_eighties_only(movie_library, eighties)
+    not_in_eighties(movie_library, eighties, genre_list)
 
 def movies_actor_dict(movie_library, freq_dict):
     for movie in movie_library:
@@ -63,30 +62,26 @@ def get_best_rating_actors(rating_dict, best_score, best_actors):
             best_actors.append(key)
     return best_actors, best_score
 
-def genre_frequency_dict(movie_library, genre_freq_dict):
-    for movie in movie_library:
-        genre = movie.get('genre')
-        if genre in genre_freq_dict:
-            genre_freq_dict[genre] += 1
-        else:
-            genre_freq_dict[genre] = 1
-    return genre_freq_dict
-
-def check_eighties_only(movie_library, genre_freq_dict, eighties):
+def check_eighties_only(movie_library, eighties):
     for movie in movie_library:
         if movie.get('year') >= 1980 and movie.get('year') < 1990:
             eighties.append(movie.get('genre'))
     return eighties
 
-def least_in_eighties(movie_library, eighties):
-    genre_list = []
+def least_in_eighties(eighties):
+    eighties = min(set(eighties), key = eighties.count)
+    print(f'The least popular genre in the eighties was {eighties}\n')
+
+def not_in_eighties(movie_library, eighties, genre_list):
     for movie in movie_library:
         genre = movie.get('genre')
         if genre not in eighties:
             genre_list.append(genre)
             print(f'The least popular genre in the eighties was {genre_list[0]}\n')
             break
-
+    if len(genre_list) == 0:
+        least_in_eighties(eighties)
+            
 if __name__ == '__main__':
     main()
 
