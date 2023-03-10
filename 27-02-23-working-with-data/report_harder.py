@@ -6,6 +6,7 @@ def main():
     ally_sheedy_dict = []
     count = 0
     best = ''
+
     movie_library = movie_data.movies
     movie_library = matthew_sucks(movie_library)
     acting_with_judd = we_played_with_judd(movie_library, acting_with_judd)
@@ -29,9 +30,8 @@ def we_played_with_judd(movie_library, acting_with_judd):
 
 def flatten_acting_with_judd(acting_with_judd, flattened_acting_with_judd_list):
     for lijst in acting_with_judd:
-        if isinstance(lijst, list):
-            for nested_lijst in lijst:
-                flattened_acting_with_judd_list.append(nested_lijst)
+        for nested_lijst in lijst:
+            flattened_acting_with_judd_list.append(nested_lijst)
     return flattened_acting_with_judd_list
 
 def playing_with_judd_pays(movie_library, flattened_acting_with_judd_list):
@@ -57,6 +57,8 @@ def get_best_ally_sheedy_movie(ally_sheedy_dict, count, best):
             best = movie.get('title')
     print(f'\nThe best Ally Sheedy movie is {best}, with a rating of {count}\n')
     
+
+
 
 if __name__ == '__main__':
     main()
