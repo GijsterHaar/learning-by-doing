@@ -31,14 +31,12 @@ def enter_main_menu():
 def get_movie_list():
     movie_library = movie_data.movies
     for movie in movie_library:
-        title = movie.get('title')
-        year = movie.get('year')
+        title, year = movie.get('title'), movie.get('year')
         print(f'{title}, {year}.')
     print()       
 
 def get_actor_data():
     print(2)
-
 
 def get_movies_by_genre():
     print(3)
