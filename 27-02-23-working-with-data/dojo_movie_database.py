@@ -31,26 +31,64 @@ def enter_main_menu():
 def get_movie_list():
     movie_library = movie_data.movies
     for movie in movie_library:
-        title = movie.get('title')
-        year = movie.get('year')
+        title, year = movie.get('title'), movie.get('year')
         print(f'{title}, {year}.')
-    print()       
+    print("\nThese are the movies in the database.\nWhat do you want to do next?")
+    start_message()
+    main_choice = enter_main_menu()
+    navigate_main_menu(main_choice)
 
 def get_actor_data():
-    print(2)
+    movie_library = movie_data.movies
+    name = input('\nEnter the name of the actor you are looking for: ')
+    print_actor_data(movie_library, name.title())
+    start_message()
+    main_choice = enter_main_menu()
+    navigate_main_menu(main_choice)
+    
+def print_actor_data(movie_library, name):
+    for movie in movie_library:
+        for actors in movie.get('actors'):
+            if name == actors:
+                title, year = movie.get('title'), movie.get('year')
+                print(f'{name}, {title}, {year}.')
+    print(f"\nThese are the {name} movies in the database.\nWhat do you want to do next?")
 
 
 def get_movies_by_genre():
-    print(3)
+    movie_library = movie_data.movies
+    genre = input('\nEnter the name of the genre you are looking for: ')
+    print_genre_data(movie_library, genre.lower())
+    start_message()
+    main_choice = enter_main_menu()
+    navigate_main_menu(main_choice)
+
+def print_genre_data(movie_library, genre):
+    for movie in movie_library:
+        if genre == movie.get('genre'):
+            title, year = movie.get('title'), movie.get('year')
+            print(f'{genre}, {title}, {year}.')
+    print(f"\nThese are the {genre} movies in the database.\nWhat do you want to do next?")
+
+
+def login():
+    user, userpass = 'user', 'userpass'
+    logname = input('You have to log in to do that.\nPlease enter your username: ')
+    logpass = input('Please enter your password: ')
+    if user == logname and userpass == logpass:
+        return
 
 def add_movies():
-    print(4)
+    login()
+    print('\nyeay\n')
 
 def opt_out():
-    print(5)
+    print()
+    quit()
+
 
 def navigate_main_menu(main_choice):
-    menu_list = [get_movie_list, get_actor_data, get_movies_by_genre, add_movies, quit]
+    menu_list = [get_movie_list, get_actor_data, get_movies_by_genre, add_movies, opt_out]
     return menu_list[main_choice -1]()
 
 
