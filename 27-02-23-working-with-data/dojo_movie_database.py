@@ -80,7 +80,7 @@ def login_fail():
 def input_movies():
     title = input('Please enter your title: ')
     actors = input('Please enter the actors, separated by a comma: ')
-    actors = actors.split(',')
+    actors = actors.title().replace(' ', '').split(',')
     year = int(input('Please enter the year: '))
     genre = input('Please enter the genre: ')
     rating = int(input('Please enter the rating: '))
