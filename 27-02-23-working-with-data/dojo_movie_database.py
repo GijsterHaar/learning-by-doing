@@ -10,6 +10,8 @@ The user can select an option, the program will do it, and afterwards the progra
 """
 
 def main():
+    movie_library = movie_data.movies
+    print(movie_library)
     start_message()
     main_choice = enter_main_menu()
     print()
@@ -42,6 +44,7 @@ def get_actor_data():
     main()
     
 def print_actor_data(movie_library, name):
+    print(movie_library)
     for movie in movie_library:
         for actors in movie.get('actors'):
             if name == actors:
