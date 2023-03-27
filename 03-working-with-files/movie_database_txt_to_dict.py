@@ -7,7 +7,7 @@ def main():
     with open("movie_data.txt", 'r') as file:
         chunked_file = get_the_file(file)
     movie_dict = make_movie_dict(chunked_file)
-    main_menu = SHOW_MENU_AGAIN
+    main_menu = True
     while main_menu:
         start_message()
         main_menu = navigate_main_menu(movie_dict)
