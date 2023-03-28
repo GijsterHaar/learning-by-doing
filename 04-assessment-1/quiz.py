@@ -62,8 +62,8 @@ def enter_choice():
 def compare(question, choice, correct):
     answer = question.get('answers')[choice-1]
     if  answer == question.get('correct'):
-        print(f'\nYes, {answer} is the correct answer\n')
         correct += 1
+        print(f'\nYes, {answer} is the correct answer\nYour score is {correct}\n')
     else:
         print(f'\nNope, {answer} is not correct\n')
     return correct
@@ -77,11 +77,10 @@ def overwrite_high_score(correct, list_high_score, high_score):
     for score in list_high_score:
         score.split(' ')
         if correct >= int(score[-1]):
-            print(f'Congratulations, {correct} is the high_score')
-            name = input('You may enter your name here: ')
-            high_score.seek(0)
-            high_score.truncate()
-            high_score.write(f'Name: {name}  -  High score: {correct}')
+            with open('high_score.txt', 'w+') as high_score:
+                print(f'Congratulations, {correct} is the high_score')
+                name = input('You may enter your name here: ')
+                high_score.write(f'Name: {name}  -  High score: {correct}')
 
 def compare_high_score(correct):
     with open('high_score.txt', 'r+') as high_score:
