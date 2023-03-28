@@ -18,6 +18,7 @@ def get_the_file(file):
     clean_file = [i.strip() for i in file]
     chunk_size = 5
     chunked_file = [clean_file[i:i + chunk_size] for i in range(0, len(clean_file), chunk_size)]
+    print(chunked_file)
     return chunked_file
 
 
@@ -27,6 +28,7 @@ def make_movie_dict(chunked_file):
         zip_dict = dict(zip(key_list, movies))
         zip_dict['actors'] = zip_dict['actors'].split(', ')
         movie_dict.append(zip_dict)
+    print(movie_dict)
     return movie_dict
     
 
