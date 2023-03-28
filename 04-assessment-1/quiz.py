@@ -7,6 +7,7 @@ def main():
     count = 0
     correct_score = 0
     welcome()
+    check_high_score()
     while count < 5:
         question = get_question(quiz_dict)
         choice = enter_choice()
@@ -32,6 +33,14 @@ def make_quiz_dict(chunked_file):
 def welcome():
     print('''\nWelcome to my little quiz.
 You have to answer 5 questions.\n''')
+
+def check_high_score():
+    with open('high_score.txt', 'r') as high_score_file:
+        high_score_file = high_score_file.readlines()
+        if len(high_score_file) == 0:
+            print('There is no high score yet, go ahead and set one\n')
+        else:
+            print(f'The high score is:\n{high_score_file[0]}\nCan you beat that?\n')
 
 def get_question(quiz_dict):
     question = random.choice(quiz_dict)
