@@ -57,8 +57,14 @@ def test_parse_card_incorrect_input_rank_three_char():
 
 
 
-# def test_parse_card_incorrect_input_suit_two_char
-# def test_parse_card_incorrect_input_suit_two_char
+def test_parse_card_incorrect_input_suit_two_char():
+    with pytest.raises(ValueError, match= r'.*suit.*'):
+        result = parse_card('7A')
+
+
+
+
+# def test_parse_card_incorrect_input_suit_three_char
 # def test_parse_card_with_incorrect_input_accent
 # def test_parse_card_with_incorrect_input_emoij
 # def test_correct_use_of_a_or_an
