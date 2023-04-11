@@ -41,7 +41,7 @@ def parse_card(input):
         elif entered_card in ranks_high:
             card_dict['rank'] = rank_dict_high[entered_card]
             output_card = card_dict['rank']
-            if card_dict['rank'] == 'A':
+            if output_card == 'ace':
                 card_dict['description'] = f'an {output_card} of {output_suit}'
             elif input == 'KS':
                 card_dict['description'] = f'a {output_card} of {output_suit}'

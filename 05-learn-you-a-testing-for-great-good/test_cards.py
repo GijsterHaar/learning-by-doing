@@ -69,13 +69,23 @@ def test_parse_card_incorrect_input_suit_three_char():
 
 
 
-def test_correct_use_of_a_or_an():
+def test_correct_use_of_a_or_an_with_8():
     result = parse_card('8C')
     assert result == {
         'rank': '8',
         'suit': 'clubs',
         'description': 'an eight of clubs'
     }
+
+
+def test_correct_use_of_a_or_an_with_ace():
+    result = parse_card('AC')
+    assert result == {
+        'rank': 'ace',
+        'suit': 'clubs',
+        'description': 'an ace of clubs'
+    }
+
 
 # def test_parse_card_with_incorrect_input_accent
 # def test_parse_card_with_incorrect_input_emoij
