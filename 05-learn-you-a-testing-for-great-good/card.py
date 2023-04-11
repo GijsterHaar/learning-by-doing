@@ -8,6 +8,7 @@ def parse_card(input):
                              '7': 'seven', '8': 'eight', '9': 'nine', '10': 'ten', 'J': 'jack',
                              'Q': 'queen', 'K': 'king', 'A': 'ace'}
     card_dict = {}
+    AN = ['8', 'A']
 
     if type(input) != str or len(input) <1:
         raise ValueError('Sorry mate, wrong input means no output')
@@ -29,15 +30,9 @@ def parse_card(input):
         elif entered_card not in ranks:
             raise ValueError('Sorry mate, thats not a known rank in a deck')
         elif entered_suit in suit_dict.keys() and entered_card in rank_dict:
-            card_dict['suit'] = suit_dict[entered_suit]
-            card_dict['rank'] = rank_dict[entered_card]
-            output_suit = card_dict['suit'] 
-            output_card = description_rank_dict[entered_card]
-            card_dict['description'] = f'a {output_card} of {output_suit}'
-            if output_card == 'eight':
-                card_dict['description'] = f'an {output_card} of {output_suit}'
-            elif output_card == 'ace':
-                card_dict['description'] = f'an {output_card} of {output_suit}'
+            card_dict= parse_input(card_dict, suit_dict, rank_dict, description_rank_dict, entered_suit, entered_card)
+            if entered_card in AN:
+                card_dict['description'] = f'an {description_rank_dict[entered_card]} of {suit_dict[entered_suit]}'
         return card_dict
 
     if len(input) == 3:
@@ -45,17 +40,14 @@ def parse_card(input):
         entered_suit = input[2:]
         entered_card = input[:2]
         if entered_card == '10':
-            card_dict['suit'] = suit_dict[entered_suit]
-            card_dict['rank'] = rank_dict[entered_card]
-            output_card = description_rank_dict[entered_card]
-            output_suit = card_dict['suit']
-            card_dict['description'] = f'a {output_card} of {output_suit}'
-            return card_dict   
+            card_dict = parse_input(card_dict, suit_dict, rank_dict, description_rank_dict, entered_suit, entered_card)
+            return card_dict
         else:
             raise ValueError('Sorry mate, with no 10 involved three characters is a wrong input')
     
-def parse_input():
-    pass
-    
-
-
+def parse_input(card_dict, suit_dict, rank_dict, description_rank_dict, entered_suit, entered_card):
+    card_dict['suit'] = suit_dict[entered_suit]
+    card_dict['rank'] = rank_dict[entered_card]
+    output_suit = card_dict['suit']
+    card_dict['description'] = f'a {description_rank_dict[entered_card]} of {output_suit}'
+    return card_dict
