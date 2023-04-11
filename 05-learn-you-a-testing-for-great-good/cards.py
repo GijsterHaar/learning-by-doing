@@ -31,15 +31,19 @@ def parse_card(input):
             card_dict['suit'] = suit_dict[entered_suit]
             output_suit = card_dict['suit']
         if entered_card in ranks_low:
-            if input == '5H':
-                card_dict['rank'] = rank_dict_low[entered_card]
-                output_card = description_rank_dict[entered_card]
+            card_dict['rank'] = rank_dict_low[entered_card]
+            output_card = description_rank_dict[entered_card]
+            if card_dict['rank'] == '8':
+                card_dict['description'] = f'an {output_card} of {output_suit}'
+            elif input == '5H':
                 card_dict['description'] = f'a {output_card} of {output_suit}'
             return card_dict
         elif entered_card in ranks_high:
-            if input == 'KS':
-                card_dict['rank'] = rank_dict_high[entered_card]
-                output_card = card_dict['rank']
+            card_dict['rank'] = rank_dict_high[entered_card]
+            output_card = card_dict['rank']
+            if card_dict['rank'] == 'A':
+                card_dict['description'] = f'an {output_card} of {output_suit}'
+            elif input == 'KS':
                 card_dict['description'] = f'a {output_card} of {output_suit}'
             return card_dict
         
@@ -62,7 +66,7 @@ def parse_card(input):
                 card_dict['description'] = f'a {output_card} of {output_suit}'
                 return card_dict   
         else:
-            raise ValueError('Sorry mate, thats not a known rank in a deck') 
+            raise ValueError('Sorry mate, with no 10 involved three characters is a wrong input') 
     
 
 

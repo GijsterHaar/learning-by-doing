@@ -2,12 +2,12 @@ import pytest
 from cards import parse_card
 
 def test_parse_card_recognize_empty_string():
-    with pytest.raises(ValueError, match= r'.*input.*'):
+    with pytest.raises(ValueError, match= 'input'):
         result = parse_card('')
 
 
 def test_parse_card_recognize_invalid_input_char_lower():
-    with pytest.raises(ValueError, match= r'.*capital.*'):
+    with pytest.raises(ValueError, match= 'capital'):
         result = parse_card('as')
 
 
@@ -52,7 +52,7 @@ def test_parse_card_incorrect_input_rank_two_char():
 
 
 def test_parse_card_incorrect_input_rank_three_char():
-    with pytest.raises(ValueError, match= r'.*rank.*'):
+    with pytest.raises(ValueError, match= r'.*wrong.*'):
         result = parse_card('11C')
 
 
@@ -63,8 +63,19 @@ def test_parse_card_incorrect_input_suit_two_char():
 
 
 
+def test_parse_card_incorrect_input_suit_three_char():
+    with pytest.raises(ValueError, match = r'.*wrong.*'):
+        result = parse_card('7AB')
 
-# def test_parse_card_incorrect_input_suit_three_char
+
+
+def test_correct_use_of_a_or_an():
+    result = parse_card('8C')
+    assert result == {
+        'rank': '8',
+        'suit': 'clubs',
+        'description': 'an eight of clubs'
+    }
+
 # def test_parse_card_with_incorrect_input_accent
 # def test_parse_card_with_incorrect_input_emoij
-# def test_correct_use_of_a_or_an
