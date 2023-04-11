@@ -1,5 +1,5 @@
 import pytest
-from cards import parse_card
+from card import parse_card
 
 def test_parse_card_recognize_empty_string():
     with pytest.raises(ValueError, match= 'input'):
@@ -12,7 +12,7 @@ def test_parse_card_recognize_invalid_input_char_lower():
 
 
 def test_parse_card_less_than_two_characters():
-    with pytest.raises(ValueError, match= r'.*amount.*'):
+    with pytest.raises(ValueError, match= 'amount'):
         result = parse_card('A')
 
 
