@@ -14,36 +14,37 @@ def description_poker_hand(user_data):
             
             parsed_ranks.append(card['rank'])
             parsed_suits.append(card['suit'])
-            frequency_list = frequency_dict(parsed_ranks)
+            frequency_list_ranks = frequency_dict(parsed_ranks)
 
-        if len(frequency_list) == 5:
+        if len(frequency_list_ranks) == 5:
             return 'High Card'
-        elif len(frequency_list) == 4:
+        elif len(frequency_list_ranks) == 4:
             return 'One Pair'
-        elif len(frequency_list) == 3:
-            for freq in frequency_list:
+        elif len(frequency_list_ranks) == 3:
+            for freq in frequency_list_ranks:
                 if freq == 3:
                     return 'Three Of A Kind'
                 else:
                     return 'Two Pair'
-    # return frequency_list
+        elif len(frequency_list_ranks) == 2:
+            for freq in frequency_list_ranks:
+                if freq == 4:
+                    return 'Four Of A Kind'
+                else:
+                    return 'Full House'
 
 def frequency_dict(parsed_ranks):
     frequency_dict = {}
-    frequency_list = []
+    frequency_list_ranks = []
     for rank in parsed_ranks:
         if rank not in frequency_dict:
             frequency_dict[rank] = 1
         else:
             frequency_dict[rank] += 1
     for rank in frequency_dict:
-        frequency_list.append(frequency_dict[rank])
-    return frequency_list
+        frequency_list_ranks.append(frequency_dict[rank])
+    return frequency_list_ranks
 
-
-
-
-        # return parsed_ranks, parsed_suits
 
 
     

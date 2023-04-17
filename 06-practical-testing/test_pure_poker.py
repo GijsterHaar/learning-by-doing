@@ -46,3 +46,11 @@ def test_two_pair():
 def test_three_of_a_kind():
     result = description_poker_hand('6H 4H 6C 6D 10H')
     assert result == 'Three Of A Kind'
+
+def test_four_of_a_kind():
+    result = description_poker_hand('6H 6S 6C 6D 10H')
+    assert result == 'Four Of A Kind'
+
+def test_full_house():
+    result = description_poker_hand('6H 6S 6C 10D 10H')
+    assert result == 'Full House'
