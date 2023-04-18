@@ -68,6 +68,11 @@ def test_parse_card_incorrect_input_suit_three_char():
         result = parse_card('7AB')
 
 
+def test_parse_card_incorrect_input_suit_three_char():
+    with pytest.raises(ValueError, match = r'.*wrong.*'):
+        result = parse_card('10K')
+
+
 
 def test_correct_use_of_a_or_an_with_8():
     result = parse_card('8C')

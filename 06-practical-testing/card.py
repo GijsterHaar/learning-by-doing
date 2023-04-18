@@ -36,7 +36,8 @@ def parse_card(input):
     if len(input) == 3:
         entered_suit = input[2:]
         entered_card = input[:2]
-        if entered_card == '10':
+        legit_suits = ['H', 'C', 'S', 'D']
+        if entered_card == '10' and entered_suit in legit_suits :
             card_dict = parse_input(card_dict, suit_dict, rank_dict, description_rank_dict, entered_suit, entered_card)
             return card_dict
         else:
