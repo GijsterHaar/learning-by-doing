@@ -1,6 +1,6 @@
 import pytest
-# from pure_poker import description_poker_hand
-from vsc.udemy_challenges.scratch2 import description_poker_hand
+from pure_poker import description_poker_hand
+
 
 def test_empty_string():
     result = description_poker_hand('')
