@@ -1,5 +1,6 @@
 import pytest
-from pure_poker import description_poker_hand
+# from pure_poker import description_poker_hand
+from vsc.udemy_challenges.scratch2 import description_poker_hand
 
 def test_empty_string():
     result = description_poker_hand('')
@@ -84,3 +85,14 @@ def test_straight_flush():
 def test_royal_flush():
     result = description_poker_hand('10H JH QH KH AH')
     assert result == 'Royal Flush'
+
+def test_failure_1():
+    result = description_poker_hand('2H 3H 5H 4S 6D') 
+    assert result == 'Straight'
+def test_failure_2():
+    result = description_poker_hand('2H 5D 5S 5C 5H')
+    assert result == 'Four Of A Kind'
+
+def test_failure_3():
+    result = description_poker_hand('2H 5D AS 5C 5H')
+    assert result == 'Three Of A Kind'
