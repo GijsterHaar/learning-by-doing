@@ -1,5 +1,5 @@
 from card import parse_card
-
+from itertools import permutations
 
 def description_poker_hand(user_data):
     parsed_ranks = []
@@ -31,8 +31,13 @@ def description_poker_hand(user_data):
                                        for i in range(0, len(rank_order_list_straight))]
                 if len(chunked_lists_ranks) == 4:
                     break
-                
-            if parsed_ranks in chunked_lists_ranks and len(frequency_list_suits) > 1:
+            
+            for chunked_list in chunked_lists_ranks:
+                possibles = list(permutations(chunked_list))
+                for possible in possibles:
+                    possible = list(possible)
+
+            if parsed_ranks in possible and len(frequency_list_suits) > 1:
                 return "Straight"
             
             if len(frequency_list_suits) == 1:
