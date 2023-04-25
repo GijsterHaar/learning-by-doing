@@ -30,7 +30,28 @@ def test_two_pair():
     compare_input_to_expected_result('7S 10S JD 10H 7D' ,'Two Pair')
 
 def test_three_of_a_kind():
-    compare_input_to_expected_result('8S JH 8D KH 8C', 'Three of a Kind')
+    compare_input_to_expected_result('8S JH 8D KH 8C', 'Three Of A Kind')
+
+def test_full_house():
+    compare_input_to_expected_result('8S 9S 8H 9H 8C', 'Full House')
+
+def test_four_of_a_kind():
+    compare_input_to_expected_result('9S 10S 9C 9H 9D', 'Four Of A Kind')
+
+def test_straight():
+    compare_input_to_expected_result('8S 9C 7H 6S 5H', 'Straight')
+
+def test_straight_with_ten():
+    compare_input_to_expected_result('8S 9C 7H 6S 10H', 'Straight')
+
+def test_straight_flush():
+    compare_input_to_expected_result('8H 10H QH JH 9H', 'Straight Flush')
+
+def test_royal_flush():
+    compare_input_to_expected_result('10H AH QH JH KH', 'Royal Flush')
+
+def test_flush():
+    compare_input_to_expected_result('10H 5H JH 2H AH', 'Flush')
 
 def compare_input_to_expected_result(data, poker_hand=INVALID_STRING):
     result = description_poker_hand(data)

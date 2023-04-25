@@ -46,7 +46,6 @@ def test_length_poker_hand_15_invalid_wrong_rank_and_suit():
     result = description_poker_hand('2K 3H 4C 5C 11H')
     assert result == "Sorry, that's invalid"
 
-def test_high_card():
     result = description_poker_hand('2H 4H 6C 8C 10H')
     assert result == 'High Card'
 
