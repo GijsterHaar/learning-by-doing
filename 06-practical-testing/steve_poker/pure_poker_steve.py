@@ -23,7 +23,7 @@ def description_poker_hand(user_input):
         if suit not in frequency_suits:
             frequency_suits[suit] = 0
         frequency_suits[suit] += 1
-
+        
     if len(frequency_suits) == 1:
         if ranks_list == ranks_royal_flush:
             return 'Royal Flush'
@@ -35,7 +35,6 @@ def description_poker_hand(user_input):
             hand.sort()
             if hand != ranks_list:
                 return 'Flush'
-
     for hand in chunked_ranks:
         hand.sort()
         if hand == ranks_list:
