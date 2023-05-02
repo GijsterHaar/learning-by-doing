@@ -1,7 +1,6 @@
 print()
 from pure_new_number import check_for_valid_input
 from pure_new_number import check_guess
-from pure_new_number import check_end_message
 
 INVALID_INPUT = 'Invalid input'
 
@@ -40,14 +39,6 @@ def test_input_to_low():
 def test_input_to_high():
     result = check_guess(78, 45)
     assert result == "To high"
-
-def test_get_end_message_guessed():
-    result = check_end_message(50, 50)
-    assert result == True
-
-def test_get_end_message_not_guessed():
-    result = check_end_message(50, 40)
-    assert result == False
 
 def compare_input_to_expected_result(data, guess=INVALID_INPUT):
     result = check_for_valid_input(data)

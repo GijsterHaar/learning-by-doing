@@ -36,16 +36,9 @@ def get_guess_result(play_game, user_guess, turns):
         turns -= 1
     return message, turns
 
-def check_end_message(user_guess, magic_number):
-    if user_guess == magic_number:
-        return True
-    return False
 
-def get_end_message(end_message, user_guess, magic_number):
-    if end_message:
-        end_message = f'\nYes, {user_guess} is the magic number\n'
-    else:
-        end_message =f'{magic_number} is the magic number\n'
+def get_end_message( magic_number):
+    end_message =f'{magic_number} is the magic number\n'
     return end_message
     
    

@@ -3,7 +3,6 @@ print()
 from pure_new_number import check_for_valid_input
 from pure_new_number import get_magic_number
 from pure_new_number import check_guess
-from pure_new_number import check_end_message
 from pure_new_number import get_end_message
 from pure_new_number import get_guess_result
 
@@ -24,8 +23,7 @@ def main():
             print(message)
 
     if turns == 0:
-        end_message = check_end_message(user_guess, magic_number)
-        end_message = get_end_message(end_message, user_guess, magic_number)
+        end_message = get_end_message(magic_number)
         print(end_message)
 
 
