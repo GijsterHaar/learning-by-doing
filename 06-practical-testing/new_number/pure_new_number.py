@@ -15,7 +15,7 @@ def check_for_valid_input(user_guess):
         return 'Invalid input'
     return True
 
-def check_winning(user_guess, magic_number):
+def check_guess(user_guess, magic_number):
 
     if int(user_guess) == magic_number:
         return False
@@ -24,11 +24,29 @@ def check_winning(user_guess, magic_number):
     else:
         return "To high"
 
-def get_end_message(user_guess, magic_number):
+def get_guess_result(play_game, user_guess, turns):
+    if play_game == False:
+        message = f'\nYes, {user_guess} is the magic number\n'
+    elif play_game == 'To low':
+        message = f'\nSorry, {user_guess} is to low\n'
+        turns -= 1
+    else:
+        play_game == "To high"
+        message = f'\nSorry, {user_guess} is to high\n'
+        turns -= 1
+    return message, turns
+
+def check_end_message(user_guess, magic_number):
     if user_guess == magic_number:
         return True
     return False
-    
+
+def get_end_message(end_message, user_guess, magic_number):
+    if end_message:
+        end_message = f'\nYes, {user_guess} is the magic number\n'
+    else:
+        end_message =f'{magic_number} is the magic number\n'
+    return end_message
     
    
 
