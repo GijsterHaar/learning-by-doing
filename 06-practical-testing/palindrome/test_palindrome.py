@@ -16,33 +16,32 @@ def test_if_input_is_invalid_list():
     compare_input_to_expected_result([])
 
 def test_if_input_clean_punctuation():
-    result = clean_user_input('a:a[]')
-    assert result == 'aa'
+    check_clean_the_input('a:a[]', 'aa')
 
 def test_if_input_clean_different_punctuation():
-    result = clean_user_input('a,a:b"c;')
-    assert result == 'aabc'
+    check_clean_the_input('a,a:b"}[]c;', 'aabc')
 
-def test_if_input_clean_different_punctuation_extended():
-    result = clean_user_input('a a:b "c')
-    assert result == 'aabc'
+def test_if_input_clean_different_punctuation_extended_capital():
+    check_clean_the_input('A a:B "c?', "aabc")
 
 def test_is_not_palindrome():
-    result = check_for_palindrome('pie')
-    assert result == 'Not a palindrome'
+    compare_input_to_palindrome('pie', 'Not a palindrome')
 
 def test_is_palindrome():
-    result = check_for_palindrome('otto')
-    assert result == 'Yes, this is a palindrome'
+    compare_input_to_palindrome('otto', 'Yes, this is a palindrome')
 
 def test_if_it_is_a_palindrome():
-    result = check_for_palindrome('evacaniseebeesinacave')
-    assert result == 'Yes, this is a palindrome'
+    compare_input_to_palindrome('evacaniseebeesinacave', 'Yes, this is a palindrome')
 
-def test_is_palindrome_capitals():
-    result = clean_user_input('Eva, can I see bees in a cave?')
-    assert result == 'evacaniseebeesinacave'
 
 def compare_input_to_expected_result(user_input, output= INVALID_INPUT):
     result = check_for_invalid(user_input)
     assert result == output
+
+def check_clean_the_input(user_input, cleaned_or_not):
+    result = clean_user_input(user_input)
+    assert result == cleaned_or_not
+
+def compare_input_to_palindrome(user_input, palindrome_or_not):
+    result = check_for_palindrome(user_input)
+    assert result == palindrome_or_not
