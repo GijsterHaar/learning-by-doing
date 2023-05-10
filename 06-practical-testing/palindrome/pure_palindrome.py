@@ -1,13 +1,14 @@
 print()
 
-def check_for_invalid(user_input):
+def check_for_invalid_and_clean(user_input):
     if user_input == '' or not isinstance(user_input, str):
         return 'Sorry, that is invalid input'
-    else:
-        return user_input
-
-def clean_user_input(user_input):
-    user_input_list = [i for i in user_input if i.isalnum()]
+    user_input_list = []
+    for i in user_input:
+        if i.isalnum():
+            user_input_list.append(i)
+    if len(user_input_list) == 0:
+        return 'Sorry, that is invalid input'
     user_input = "".join(user_input_list)
     return user_input.lower()
 
