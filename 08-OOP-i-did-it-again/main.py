@@ -9,7 +9,7 @@ input second hand
 output declaring the winner after comparing the hands
 """
 
-from pure_poker_oop import User_Input
+from poker_user_input import User_Input
 
 
 def main():
