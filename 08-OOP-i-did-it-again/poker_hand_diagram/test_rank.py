@@ -10,7 +10,7 @@ def test_Check_invalid_int()-> None:
         assert Rank(12)
 
 def test_invalid_empty_string()-> None:
-    with pytest.raises(TypeError):
+    with pytest.raises(ValueError):
         assert Rank("")
 
 def test_invalid_rank()-> None:
@@ -28,21 +28,19 @@ def test_compare_unequel_rank()-> None:
 
 def test_unequal_rank_error()-> None:
     with pytest.raises(AssertionError):
-        assert Rank('6') == ('J')
+        assert Rank('6') == Rank('J')
 
 def test_greater_than()-> None:
     assert Rank('K') > Rank('Q')
 
-def test_not_greater_than_error()-> None:
-    with pytest.raises(ValueError):
-        Rank('J') > ('K')
+def test_not_greater_than()-> None:
+    assert not Rank('J') > Rank('K')
 
 def test_lesser_then()-> None:
     assert Rank('J') < Rank('A')
 
-def test_not_lesser_than_error()-> None:
-    with pytest.raises(AssertionError):
-        assert Rank('A') < Rank('J')
+def test_not_lesser_than()-> None:
+    assert not Rank('A') < Rank('J')
 
 
 
