@@ -27,6 +27,6 @@ def test_compare_equal_suit() -> None:
 def test_compare_unequal_suit() -> None:
     assert Suit("H") != Suit("S")
 
-def test_compare_unequal_suit_error() -> None:
-    with pytest.raises(AssertionError):
-        assert Suit("H") == Suit("S")
+def test_compare_unequal_suit_wrong_object_type() -> None:
+    with pytest.raises(TypeError):
+        assert Suit("H") == Suit(None)

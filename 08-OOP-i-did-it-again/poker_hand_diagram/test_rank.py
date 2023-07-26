@@ -26,9 +26,9 @@ def test_compare_equal_rank()-> None:
 def test_compare_unequel_rank()-> None:
     assert Rank('7') != Rank('8')
 
-def test_unequal_rank_error()-> None:
-    with pytest.raises(AssertionError):
-        assert Rank('6') == Rank('J')
+def test_unequal_rank_wrong_object_type()-> None:
+    with pytest.raises(TypeError):
+        assert Rank('6') == Rank(None)
 
 def test_greater_than()-> None:
     assert Rank('K') > Rank('Q')
