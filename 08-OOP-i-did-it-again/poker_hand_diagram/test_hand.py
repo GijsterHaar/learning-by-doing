@@ -1,6 +1,7 @@
 from hand import Hand
 import pytest
 
+
 def test_check_invalid_none() -> None:
     with pytest.raises(TypeError):
         assert Hand(None)

@@ -1,5 +1,6 @@
 from card import Card
 
+
 class Hand:
     def __init__(self, hand: object) -> None:
         self.hand = self._check_invalid(hand)

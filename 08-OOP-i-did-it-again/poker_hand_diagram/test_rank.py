@@ -1,6 +1,7 @@
 from rank import Rank
 import pytest
 
+
 def test_check_invalid_none()-> None: 
     with pytest.raises(TypeError):
         assert Rank(None)

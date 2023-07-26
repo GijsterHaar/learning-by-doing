@@ -1,7 +1,6 @@
 from suit import Suit
 import pytest
 
-
 def test_invalid_input_None() -> None:
     with pytest.raises(TypeError):
         result = Suit(None)

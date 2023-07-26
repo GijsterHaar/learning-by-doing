@@ -1,5 +1,5 @@
-
 _VALID_SUITS = ['H', 'C', 'D', 'S']
+
 
 class Suit:
     def __init__(self, suit: object):
