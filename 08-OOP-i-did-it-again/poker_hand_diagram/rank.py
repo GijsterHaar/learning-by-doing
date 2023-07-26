@@ -16,16 +16,16 @@ class Rank:
         if isinstance(other, Rank):
             return self.rank == other.rank
         else:
-            raise TypeError()
+            raise TypeError("Your input is invalid")
     
     def __gt__(self, other: object) -> bool:
         if isinstance(other, Rank):
             return _VALID_RANKS.index(self.rank) > _VALID_RANKS.index(other.rank)
         else:
-            raise TypeError()
+            raise TypeError("Your input is invalid")
 
     def __lt__(self, other: object) -> bool:
         if isinstance(other, Rank):
             return _VALID_RANKS.index(self.rank) < _VALID_RANKS.index(other.rank)
         else:
-            raise TypeError()
+            raise TypeError("Your input is invalid")
