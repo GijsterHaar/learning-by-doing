@@ -1,17 +1,15 @@
 from suit import Suit
 import pytest
+from typing import Any
 
 def test_invalid_input_None() -> None:
-    with pytest.raises(TypeError):
-        result = Suit(None)
+    check_for_type_error(None)
 
 def test_invalid_input_integer() -> None:
-    with pytest.raises(TypeError):
-        result = Suit(12)
+    check_for_type_error(12)
 
 def test_invalid_empty_string() -> None:
-    with pytest.raises(TypeError):
-        result = Suit("")
+    check_for_type_error("")
 
 def test_invalid_unknown_suit() -> None:
     with pytest.raises(ValueError):
@@ -27,5 +25,9 @@ def test_compare_unequal_suit() -> None:
     assert Suit("H") != Suit("S")
 
 def test_compare_unequal_suit_wrong_object_type() -> None:
+    check_for_type_error("H" == None)
+    
+
+def check_for_type_error(suit: Any) -> None:
     with pytest.raises(TypeError):
-        assert Suit("H") == Suit(None)
+        assert Suit(suit)

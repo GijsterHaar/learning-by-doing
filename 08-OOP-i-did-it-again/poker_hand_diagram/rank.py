@@ -29,3 +29,6 @@ class Rank:
             return _VALID_RANKS.index(self.rank) < _VALID_RANKS.index(other.rank)
         else:
             raise TypeError("Your input is invalid")
+    
+    def __hash__(self) -> int:
+        return self.rank.__hash__()

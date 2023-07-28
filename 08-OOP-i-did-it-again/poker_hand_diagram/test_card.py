@@ -14,7 +14,7 @@ def test_invalid_empty_string()-> None:
     with pytest.raises(ValueError):
         assert Card("")
 
-def test_invalid_rank()-> None:
+def test_invalid_unknown_rank()-> None:
     with pytest.raises(ValueError):
         assert Card("1C")
 
