@@ -38,28 +38,24 @@ def test_check_sorted_hand_from_check_invalid() -> None:
     assert result.hand == ['10D','2H','5C','7H','8H']
 
 def test_for_high_card() -> None:
-    result = Hand('7H 8H 2H 5C 10D')
-    assert result.name_the_hand() == 'High Card'
+    compare_hand_to_wins('7H 8H 2H 5C 10D', 'High Card')
 
 def test_one_pair() -> None:
-    result =  Hand('7H 5H 2H 5C 10D')
-    assert result.name_the_hand() == 'One Pair'
+    compare_hand_to_wins('7H 5H 2H 5C 10D', 'One Pair')
 
 def test_two_pair() -> None:
-    result = Hand('7H 5H 10H 5C 10D')
-    assert result.name_the_hand() == 'Two Pair'
+    compare_hand_to_wins('7H 5H 10H 5C 10D', 'Two Pair')
 
 def test_three_of_a_kind() -> None:
-    result = Hand('7H 5H 5D 5C 10D')
-    assert result.name_the_hand() == 'Three of a Kind'
+    compare_hand_to_wins('7H 5H 5D 5C 10D', 'Three Of A Kind')
 
 def test_full_house() -> None:
-    result = Hand('7H 5H 5D 5C 7D')
-    assert result.name_the_hand() == 'Full House'
+    compare_hand_to_wins('7H 5H 5D 5C 7D', 'Full House')
 
 def test_four_of_a_kind() -> None:
-    result = Hand('7H 5H 5D 5C 5S')
-    assert result.name_the_hand() == 'Four of a Kind'
+    compare_hand_to_wins('7H 5H 5D 5C 5S', 'Four Of A Kind')
+
+    
 
 def check_for_value_error(hand: str) -> None:
     with pytest.raises(ValueError):
@@ -68,3 +64,7 @@ def check_for_value_error(hand: str) -> None:
 def check_for_type_error(hand: Any) -> None:
     with pytest.raises(TypeError):
         assert Hand(hand)
+
+def compare_hand_to_wins(hand: object, win: str) -> None:
+    result = Hand(hand)
+    assert result._name_the_hand() == win
