@@ -14,7 +14,7 @@ class Rank:
     
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Rank):
-            return self.rank == other.rank
+            return _VALID_RANKS.index(self.rank) == _VALID_RANKS.index(other.rank)
         else:
             raise TypeError("Your input is invalid")
     
