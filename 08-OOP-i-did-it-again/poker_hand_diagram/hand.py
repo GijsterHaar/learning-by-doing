@@ -15,7 +15,6 @@ class Hand:
         self.seq = [key.rank for key in self.ordered_dict]
         self.seq.sort()
         self.return_card = self._name_the_hand()
-        self.__str__ = f'Your hand is a {self.return_card[0]}'
     
 
     def _check_invalid(self, hand: object) -> list[str]:
@@ -110,5 +109,5 @@ class Hand:
             return self.return_card[-1] < other.return_card[-1]
     
     def __str__(self) -> str:
-        return self.__str__
+        return self.return_card[0]
 
