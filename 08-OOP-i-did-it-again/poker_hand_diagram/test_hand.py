@@ -91,19 +91,11 @@ def test_not_lesser_than()-> None:
 
 def test_string_method() -> bool:
     result = Hand('10H KH AH JH QH')
-<<<<<<< Updated upstream
-    assert str(result) == 'Royal Flush'
-=======
-    assert str(result) == 'Your hand is a Royal Flush'
->>>>>>> Stashed changes
+    assert result.__str__ == 'Your hand is a Royal Flush'
 
 def test_string_method_again() -> bool:
     result = Hand('7H 5H 5D 5C 7D')
-<<<<<<< Updated upstream
-    assert str(result) == 'Full House'
-=======
-    assert str(result) == 'Your hand is a Full House'
->>>>>>> Stashed changes
+    assert result.__str__ == 'Your hand is a Full House'
 
 def check_for_value_error(hand: str) -> None:
     with pytest.raises(ValueError):
