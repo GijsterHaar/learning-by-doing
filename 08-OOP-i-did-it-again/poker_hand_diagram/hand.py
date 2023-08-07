@@ -1,5 +1,5 @@
 from card import Card
-from typing import Any, Dict, List
+from typing import Dict, List
 from rank import Rank
 from suit import Suit
 from chunk_seq_of_ranks import Chunk
@@ -32,7 +32,7 @@ class Hand:
     
 
     def _order_my_cards(self) -> Dict[Rank, List[Card]]: # Got this from Carla
-        ordered_dict: Dict = {}
+        ordered_dict: Dict[Rank, List[Card]]= {}
         for card in self.cards:
             if card.valid_rank not in ordered_dict:
                 ordered_dict[card.valid_rank] = []
