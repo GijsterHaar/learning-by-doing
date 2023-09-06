@@ -1,14 +1,13 @@
+from math import pi
+
 diameters = [10, 4, 83.2, 62, 33.3]
 
-def main():
-    '''
-        The 'diameters' list is a list of diameters of circles.
-        The diameter is in centimetres.
-        For each circle, print out the area of the circle.
-        The results should look like:
-            Circle with diameter 10 has an area of ???
-    '''
-    pass
+def get_area(diameters):
+    for diameter in diameters:
+        area = pi * ((diameter / 2 ) ** 2)
+        
+        print(f"Circle with diameter {diameter} has an area of " + "%.2f" % area)
 
-if __name__ == '__main__':
-    main()
+
+if __name__ == "__main__":
+    get_area(diameters)
