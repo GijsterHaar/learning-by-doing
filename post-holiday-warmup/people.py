@@ -9,8 +9,8 @@ def make_skill(name, ability):
 EMPLOYEES = [
     make_employee('Alice', [make_skill('python', 8), make_skill('java', 5)]),
     make_employee('Bob', [make_skill('python', 4)]),
-    make_employee('Caroline', [make_skill('java', 7), make_skill('c', 8), make_skill('package management', 6)]),
-    make_employee('Dave', [make_skill('c', 1), make_skill('package management', 2)]),
+    make_employee('Caroline', [make_skill('java', 7), make_skill('c', 8), make_skill('project management', 6)]),
+    make_employee('Dave', [make_skill('c', 1), make_skill('project management', 2)]),
     make_employee('Erin', [make_skill('java', 3), make_skill('python', 8), make_skill('forth', 7)]),
     make_employee('Gov', [make_skill('python', 6), make_skill('c', 6)]),
 ]
