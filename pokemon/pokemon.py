@@ -1,7 +1,4 @@
 def create(poke, name, type, health):
-    #poke = {} # creating the dictionary
-
-    # The next three lines initialize the dictionary
     poke['name'] = name
     poke['type'] = type
     poke['health'] = health
@@ -24,23 +21,6 @@ def describe(this_pokemon):
             f"with {this_pokemon['health']} health")
 
 def battle(my_pokemon, their_pokemon):
-    # By default, a pokemon does 2 damage
-    # If you are strong against the other, damage == 4
-    # If you are weak against the other, damage == 1
-    # new_health = current_health - damage
-    # Pokemon with highest new health wins
-    # bulbasaur, grass , 5 vs squirtle, water, 5
-    # bulbasaur attacks squirtle
-    # bulbasaur (grass) is strong vs squirtle (water)
-    # so does 4 damage instead of 2
-    # squirtles new health = 5 - 4 (i.e. 1)
-    #
-    # squirtle attacks bulbasaur
-    # squirtle (water) is weak against bulbasaur (grass)
-    # so does 1 damage instead of 2
-    # bulbasaurs new health = 5 - 1 == 4
-    #
-    # bulbasaur (4 health) beats squirtle (1 health)
 
     fire_table = {
         'fire': 2,
