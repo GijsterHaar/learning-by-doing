@@ -6,12 +6,14 @@ class PassWordChecker:
     
     def check(self, password):
         self.final_message = []
-        final_result = True
+        self.final_result = True
         for req in self.requirements:
             if not req.check(password):
                 self.final_message.append(req.message())
-                final_result = False
-        return final_result
+                self.final_result = False
+
+    def return_check(self):
+        return self.final_result
     
     def message(self):
         return self.final_message

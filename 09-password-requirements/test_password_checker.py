@@ -4,7 +4,6 @@ from contain_number import MustContainNumberRequirement
 from minimum_length import MustMeetMinimumLenghtRequirement
 from contain_special_character import MustContainSpecialCharacterRequirement
 from password_checker import PassWordChecker
-from main import main
 
 import pytest
 
@@ -80,7 +79,7 @@ def test_minimum_length_message():
     assert result.message() == 'The password must contain at least 8 characters.'
 
 
-def test_spercial_character_exists():
+def test_special_character_exists():
     assert MustContainSpecialCharacterRequirement()
 
 
@@ -102,7 +101,8 @@ def test_not_contain_special_character():
 def test_one_requirement():
     requirements = [MustMeetMinimumLenghtRequirement()]
     checker = PassWordChecker(requirements)
-    assert checker.check('1234Abcd')
+    checker.check('1234Abcd')
+    assert checker.return_check()
 
 
 def test_two_requirements():
@@ -110,7 +110,8 @@ def test_two_requirements():
                     MustContainCapitalRequirement(),
                     ]
     checker = PassWordChecker(requirements)
-    assert checker.check('A7')
+    checker.check('A7')
+    assert checker.return_check()
 
 
 def test_two_requirements_2():
@@ -118,7 +119,8 @@ def test_two_requirements_2():
                     MustMeetMinimumLenghtRequirement(),
                     ]
     checker = PassWordChecker(requirements)
-    assert checker.check('1234Abcd') 
+    checker.check('1234Abcd')
+    assert checker.return_check()
 
 
 def test_two_requirements_fail():
@@ -126,7 +128,8 @@ def test_two_requirements_fail():
                     MustContainCapitalRequirement(),
                     ]
     checker = PassWordChecker(requirements)
-    assert checker.check('A') == False
+    checker.check('A')
+    assert not checker.return_check()
 
 
 def test_three_requirements():
@@ -135,7 +138,8 @@ def test_three_requirements():
                     MustContainNumberRequirement(),
                     ]
     checker = PassWordChecker(requirements)
-    assert checker.check('1234Abcd')
+    checker.check('1234Abcd')
+    assert checker.return_check() 
 
 
 def test_three_requirements_fail():
@@ -144,7 +148,8 @@ def test_three_requirements_fail():
                     MustContainNumberRequirement(),
                     ]
     checker = PassWordChecker(requirements)
-    assert checker.check('1234abcd') == False
+    checker.check('1234abcd')
+    assert not checker.return_check()
 
 
 def test_four_requirements():
@@ -154,7 +159,8 @@ def test_four_requirements():
                     MustContainSpecialCharacterRequirement(),
                     ]
     checker = PassWordChecker(requirements)
-    assert checker.check('12?4Abcd')
+    checker.check('12?4Abcd')
+    assert checker.return_check()
 
 
 def test_four_requirements_fail():
@@ -164,7 +170,8 @@ def test_four_requirements_fail():
                     MustContainSpecialCharacterRequirement(),
                     ]
     checker = PassWordChecker(requirements)
-    assert checker.check('12?4abcd') == False
+    checker.check('12?4abcd')
+    assert not checker.return_check()
 
 
 def test_return_one_message_capital():
@@ -189,6 +196,7 @@ def test_return_two_messages_capital_and_number():
     assert checker.message() == ['The password must contain at least one capital.',
                                  'The password must contain at least one number.'
                                  ]
+
 
 def test_return_three_messages():
     requirements = [MustContainCapitalRequirement(),
