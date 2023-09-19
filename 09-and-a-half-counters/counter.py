@@ -5,16 +5,12 @@ class Counter:
         
     def add(self):
         self.counter += 1
-        return self.counter
     
     def total(self):
         return self.counter
     
     def reset(self):
         self.counter = 0
-        return self.counter
-
-
 
 
 # CARLA BOUNDARY
