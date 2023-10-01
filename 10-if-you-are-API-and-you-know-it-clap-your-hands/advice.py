@@ -5,7 +5,7 @@ action = input('What action would you like to perform,\
                \npress 2 for search by id\
                \npress 3 for keyword search: ')
 
-if not isinstance(action, str) or action == '':
+if not isinstance(action, str) or action == '' or action not in ('1', '2', '3'):
     print("Ow no, that's not a valid input")
 
 if action == '1':
@@ -26,5 +26,8 @@ elif action == '3':
     url = f"https://api.adviceslip.com/advice/search/{search_query}"
     r = requests.get(url)
     obj = r.json()
-    id_list = [d['id'] for d in obj['slips']]
-    print(f"Here's a list of al advice ID's containing your query\n{id_list}")
+    if 'slips' in obj:
+        print(f"Here's a list of al advice ID's containing your query\n{[d['id'] for d in obj['slips']]}")
+    else:
+        print(obj['message']['text'])
+
