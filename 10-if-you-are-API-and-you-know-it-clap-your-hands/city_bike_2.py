@@ -19,35 +19,53 @@ every 10 seconds and the difference with 10 seconds ago
 5. calculate the difference in 'free_bikes' with the previous info 'free_bikes"
 and print
 """
+def main():
+    # I give previous_free_bikes a string as startvalue, because a False (or True) would mess
+    # with my code when previous_free_bikes == 0
+    previous_free_bikes = "welcome-message"
 
-previous_free_bikes = False
-
-url = "http://api.citybik.es/v2/networks/"
-r = requests.get(url)
-obj = r.json()
-network_id = [d['id'] for d in obj["networks"] if d['location']['city'] == 'London']
-
-while True: #   create an infinite loop
-    sleep(10)               # set iterations to 10 seconds per iteration
-
-    url = f"http://api.citybik.es/v2/networks/{network_id[0]}"
+    url = "http://api.citybik.es/v2/networks/"
     r = requests.get(url)
-    obj = r.json()
-    free_bikes = ((obj['network']['stations'][0]['free_bikes']))
-    bike = 'bike' if free_bikes == 1 else 'bikes'
+    network_id = get_network_id(r.json())
 
-    if previous_free_bikes != False:
-        if free_bikes < previous_free_bikes:
-            difference = (previous_free_bikes - free_bikes)
-            difbike = 'bike' if difference == 1 else 'bikes'
-            print(f"we rented out {difference} {difbike}. We have {free_bikes} {bike} left")
-        elif free_bikes > previous_free_bikes:
-            difference = (free_bikes - previous_free_bikes)
-            difbike = 'bike' if difference == 1 else 'bikes'
-            print(f"we had {difference} {difbike} returned. We have {free_bikes} {bike} left")
+    while True: #   create an infinite loop
+        sleep(10)               # set iterations to 10 seconds per iteration
+
+        url = f"http://api.citybik.es/v2/networks/{network_id[0]}"
+        r = requests.get(url)
+        free_bikes = get_free_bikes(r.json())
+        
+        free_bikes_message = print_free_bikes(free_bikes, previous_free_bikes)
+        print(free_bikes_message)
+        previous_free_bikes = free_bikes
+
+
+def get_network_id(obj):
+        network_id = [d['id'] for d in obj["networks"] if d['location']['city'] == 'London']
+        return network_id
+
+def get_free_bikes(obj):
+        free_bikes = obj['network']['stations'][0]['free_bikes']
+        return free_bikes
+
+def print_free_bikes(free_bikes, previous_free_bikes):
+        bike = 'bike' if free_bikes == 1 else 'bikes'
+        if previous_free_bikes != 'welcome-message':
+            if free_bikes < previous_free_bikes:
+                difference = (previous_free_bikes - free_bikes)
+                difbike = 'bike' if difference == 1 else 'bikes'
+                return f"we rented out {difference} {difbike}. We have {free_bikes} {bike} left"
+            elif free_bikes > previous_free_bikes:
+                difference = (free_bikes - previous_free_bikes)
+                difbike = 'bike' if difference == 1 else 'bikes'
+                return f"we had {difference} {difbike} returned. We have {free_bikes} {bike} left"
+            else:
+                return f"Nothing happened in the last 10 seconds, we still have {free_bikes} {bike} left"
         else:
-            print(f"Nothing happened in the last 10 seconds, we still have {free_bikes} {bike} left")
-    else:
-        print(f"Welcome, we have {free_bikes} {bike} for rent")
+            return f"Welcome, we have {free_bikes} {bike} for rent"
+        
+
     
-    previous_free_bikes = free_bikes
+
+if __name__ == '__main__':
+    main()

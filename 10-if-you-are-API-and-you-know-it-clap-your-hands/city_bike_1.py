@@ -21,16 +21,15 @@ every 10 seconds and the difference with 10 seconds ago
 and print
 """
 
+url = "http://api.citybik.es/v2/networks/"
+r = requests.get(url)
+obj = r.json()
+network_id = [d['id'] for d in obj["networks"] if d['location']['city'] == 'London']
+
 compare_free_bikes = []
 start = True
 for i in itertools.count(): #   create an infinite loop
     sleep(10)               # set iterations to 10 seconds per iteration
-
-    url = "http://api.citybik.es/v2/networks/"
-    r = requests.get(url)
-    obj = r.json()
-    network_id = [d['id'] for d in obj["networks"] if d['location']['city'] == 'London']
-
 
     url = f"http://api.citybik.es/v2/networks/{network_id[0]}"
     r = requests.get(url)
