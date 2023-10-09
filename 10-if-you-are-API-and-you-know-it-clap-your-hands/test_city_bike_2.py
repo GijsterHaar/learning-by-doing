@@ -51,6 +51,6 @@ def test_print_free_bikes_plus_more_than_one():
     result = print_free_bikes (11, 8)
     assert result == "we had 3 bikes returned. We have 11 bikes left"
 
-def test_print_free_bikes_plus_one_start_wirh_zero():
+def test_print_free_bikes_plus_one_start_with_zero():
     result = print_free_bikes (1, 0)
     assert result == "we had 1 bike returned. We have 1 bike left"
