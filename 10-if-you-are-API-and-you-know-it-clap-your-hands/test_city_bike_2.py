@@ -2,7 +2,7 @@ from city_bike_2 import get_network_id, get_free_bikes, print_free_bikes
 
 # create test data the way the function we want to test on expects it
 NETWORKS = {'networks': 
-            [{'company': ['ЗАО «СитиБайк»'], 'href': '/v2/networks/velobike-moscow', 'id': 'velobike-moscow', 'location': {'city': 'Moscow', 'country': 'RU', 'latitude': 55.75, 'longitude': 37.616667}, 'name': 'Velobike'},
+            [{'company': ['3AO «СитиБайк»'], 'href': '/v2/networks/velobike-moscow', 'id': 'velobike-moscow', 'location': {'city': 'Moscow', 'country': 'RU', 'latitude': 55.75, 'longitude': 37.616667}, 'name': 'Velobike'},
              {'company': ['Urban Infrastructure Partner'], 'href': '/v2/networks/baerum-bysykkel', 'id': 'baerum-bysykkel', 'location': {'city': 'Bærum', 'country': 'NO', 'latitude': 59.89455, 'longitude': 10.546343}, 'name': 'Bysykkel'},
              {'company': ['PBSC', 'Serco Group plc'], 'href': '/v2/networks/santander-cycles', 'id': 'santander-cycles', 'location': {'city': 'London', 'country': 'GB', 'latitude': 51.51121389999999, 'longitude': -0.1198244}, 'name': 'Santander Cycles'}]}
 

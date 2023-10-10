@@ -1,24 +1,27 @@
 import requests
 
 def main():
-    action = input('What action would you like to perform,\
+    action = input('\nWhat action would you like to perform?\
                 \n - press 1 for random advice\
                 \n - press 2 for search by id\
                 \n - press 3 for keyword search: ')
-    action = check_valid_input(action)
-    if action == "1":
+    
+    ret_check_invalid = check_invalid_input(action)
+
+    
+    if ret_check_invalid == "1":
         message = get_random_advice()
-    elif action == "2":
+    elif ret_check_invalid == "2":
         search_id = input("Please enter an id: ")
         message = get_advice_by_id(search_id),
-    elif action == "3":
+    elif ret_check_invalid == "3":
         search_query = input("Please enter your search query here: ")
         message = get_id_list_by_search_query(search_query)
-    else: message = action
-    print(message)
+    else: message = ret_check_invalid
+    print(f"\n{message}\n")
    
 
-def check_valid_input(action):
+def check_invalid_input(action):
     if action not in ('1', '2', '3'):
         return "Ow no, that's not a valid input"
     return action

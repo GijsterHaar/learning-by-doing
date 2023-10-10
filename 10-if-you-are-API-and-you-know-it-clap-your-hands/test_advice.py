@@ -1,11 +1,11 @@
-from advice import check_valid_input, get_advice_by_id, get_id_list_by_search_query
+from advice import check_invalid_input, get_advice_by_id, get_id_list_by_search_query
 
 def test_valid_input():
-    result = check_valid_input('1')
+    result = check_invalid_input('1')
     assert result == '1'
 
 def test_invalid_input():
-    result = check_valid_input('4')
+    result = check_invalid_input('4')
     assert result == "Ow no, that's not a valid input"
 
 def test_get_by_id():
