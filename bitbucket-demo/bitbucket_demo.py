@@ -44,8 +44,6 @@ def get_commits_by_name_per_repository(obj, repository, name_author):
     return f"{author[0]} has contributed {len(author)} commits to the {repository} repository"
 
 def get_average_time_for_commits_per_repository(obj, repository, ):
-    for d in obj['values']:
-        print(d['committerTimestamp'])
     time_spend_list = [(d['committerTimestamp'] - d['authorTimestamp']) for d in obj['values']]
     time_spend_list = set(time_spend_list)
     time_spend_list.remove(0)
