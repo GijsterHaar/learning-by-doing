@@ -7,9 +7,14 @@ def test_get_the_repositories():
     assert result == ['gijs', "captain jock strap"]
 
 
-
 def test_get_the_commits_by_name_per_repository():
-    data = {'values': [{"author": {'name': 'Berend Botje'}}]}
+    data = {'values': [{"author": {'name': 'tim.vandermeij'}}], 'irrelevant': 'ignore me'}
     repository = 'blue'
     result = get_commits_by_name_per_repository(data, repository)
-    assert result == "Berend Botje has contributed 1 commits to the blue repository"
+    assert result == "tim.vandermeij has contributed 1 commits to the blue repository"
+
+def test_get_the_commits_by_name_per_repository_failed():
+    data = {'values': [], 'irrelevant': 'ignore me'}
+    repository = 'blue'
+    result = get_commits_by_name_per_repository(data, repository, 'tim.vandermeij')
+    assert result == "tim.vandermeij contributed no commits to the blue repository"
