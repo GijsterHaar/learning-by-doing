@@ -1,12 +1,23 @@
 
 """
-write a programm that takes 12 binary numbers with 5 digits and itterate over each number per index.
-So 5 itterations
+write a program that takes 12 binary numbers with 5 digits and iterate over each number per index.
+So 5 iterations
 With each index, when the index of all numbers is a 1 more often than a 0 we only keep those numbers
 as our new positions. When it's a 0 we only keep those as our new positions. When they are
-equal we keep the one with a 1 on that index. In the end we should get just one binary number: 10111
-and then we want to convert it to a decimal number: 23
+equal we keep the one with a 1 on that index. In the end we should get just one binary number: ['10111']
+-----------------------------------------------------------------------------------------------------------
+Then we want to convert it to a decimal number that is not in a list anymore: 23
+We shall call this the oxygen value
+-----------------------------------------------------------------------------------------------------------
+When you have done that write a function that works the other way around: when there are more indexes
+with a 1 we keep 0's. We do the same until one number is left. The correct answer is ['01010'}
+Then we want to convert this: 10
+We shall call this the co2_scrubber value
+---------------------------------------------------------------------------------------------------------
+At last we calculate the survival value by multiplying the oxygen value with the co2_scrubber value: 230
 """
+
+
 
 def main():
 
